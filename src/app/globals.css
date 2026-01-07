@@ -11,14 +11,23 @@ html {
   scroll-behavior: smooth;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121212;
-    --primary: #00e5ff;
-    --secondary: #cfd8dc;
-    --text: #b0bec5;
-  }
-} */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b4539;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d6352;
+}
 
 body {
   background: var(--bg);
