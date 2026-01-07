@@ -1,16 +1,32 @@
-import LetterGlitch from "./components/LetterGlitch";
+import Introduction from "./components/home/hero/introduction";
+import AboutSection from "./components/home/AboutSection";
+import ProjectSection from "./components/home/ProjectSection";
+import ContactSection from "./components/home/ContactSection";
+import Navbar from "./components/home/layout/navbar";
+import Footer from "./components/home/layout/footer";
 
 const HomePage = () => {
   return (
-    <main className="w-full h-screen flex items-center justify-center">
-      <LetterGlitch
-        glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
-        glitchSpeed={50}
-        centerVignette={false}
-        outerVignette={true}
-        smooth={true}
-        characters="UTAKOTOBUKI!@<SCRIPT/>#$%^&*()-_+=/[]{};:<>.,0123456789"
-      />
+    <main className="w-full min-h-screen bg-[#0a0a0a]">
+      <Navbar />
+
+      <section id="home">
+        <Introduction />
+      </section>
+
+      <section id="about">
+        <AboutSection />
+      </section>
+
+      <section id="projects">
+        <ProjectSection />
+      </section>
+
+      <section id="contact">
+        <ContactSection />
+      </section>
+
+      <Footer />
     </main>
   );
 };
