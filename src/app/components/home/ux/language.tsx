@@ -51,8 +51,8 @@ const tools = [
   },
 ];
 
-// Double the tools to create a seamless loop
-const duplicatedTools = [...tools, ...tools];
+// Repeat the tools multiple times to ensure a seamless loop on all screen sizes
+const duplicatedTools = [...tools, ...tools, ...tools, ...tools];
 
 const TechStack = () => {
   return (
@@ -65,13 +65,13 @@ const TechStack = () => {
       <motion.div
         className="flex gap-12 md:gap-24 items-center whitespace-nowrap"
         animate={{
-          x: ["0%", "-50%"],
+          x: ["0%", "-150%"],
         }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 10,
+            duration: 20, // Adjusted for a smoother, professional pace
             ease: "linear",
           },
         }}
