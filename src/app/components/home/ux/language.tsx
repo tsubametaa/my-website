@@ -10,9 +10,29 @@ const tools = [
     url: "https://www.figma.com",
   },
   {
+    name: "Astro",
+    src: "/assets/astro.svg",
+    url: "https://astro.build",
+  },
+  {
     name: "React",
     src: "/assets/react.svg",
     url: "https://react.dev",
+  },
+  {
+    name: "Vue",
+    src: "/assets/vue.svg",
+    url: "https://vuejs.org",
+  },
+  {
+    name: "Tailwind",
+    src: "/assets/tailwind.svg",
+    url: "https://tailwindcss.com",
+  },
+  {
+    name: "TypeScript",
+    src: "/assets/ts.svg",
+    url: "https://www.typescriptlang.org",
   },
   {
     name: "Go",
@@ -29,16 +49,6 @@ const tools = [
     src: "/assets/github.svg",
     url: "https://github.com",
   },
-  {
-    name: "Tailwind",
-    src: "/assets/tailwind.svg",
-    url: "https://tailwindcss.com",
-  },
-  {
-    name: "TypeScript",
-    src: "/assets/ts.svg",
-    url: "https://www.typescriptlang.org",
-  },
 ];
 
 // Double the tools to create a seamless loop
@@ -46,7 +56,7 @@ const duplicatedTools = [...tools, ...tools];
 
 const TechStack = () => {
   return (
-    <div className="w-full py-10 overflow-hidden relative">
+    <div className="w-full py-15 overflow-hidden relative">
       {/* Edge Fading Gradient - Professional Touch */}
       <div className="absolute left-0 top-0 w-20 md:w-40 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 w-20 md:w-40 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
