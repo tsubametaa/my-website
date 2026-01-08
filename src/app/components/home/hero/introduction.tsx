@@ -83,7 +83,7 @@ const Introduction = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 container mx-auto px-6 h-full flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between gap-12 pt-28 lg:pt-0">
+      <div className="relative z-10 container mx-auto px-8 md:px-16 lg:px-24 h-full flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between gap-12 pt-28 lg:pt-0">
         {/* Left: Text Content */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 max-w-2xl w-full">
           {/* Badge */}
