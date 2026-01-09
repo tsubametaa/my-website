@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Maximize2,
@@ -93,6 +93,19 @@ const ProjectSection = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  });
+
   const getVisibleProjects = () => {
     const visible = [];
     for (let i = 0; i < 3; i++) {
@@ -128,14 +141,14 @@ const ProjectSection = () => {
           <div className="hidden lg:flex gap-4">
             <button
               onClick={prevSlide}
-              className="p-3 rounded-full border border-gray-800 bg-[#111] text-white hover:border-[#61dca3] hover:text-[#61dca3] transition-all active:scale-95 group"
+              className="p-3 rounded-full border border-gray-800 bg-[#111] text-white hover:border-[#61dca3] hover:text-[#61dca3] transition-all active:scale-95 group cursor-pointer"
               aria-label="Previous Slide"
             >
               <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-1" />
             </button>
             <button
               onClick={nextSlide}
-              className="p-3 rounded-full border border-gray-800 bg-[#111] text-white hover:border-[#61dca3] hover:text-[#61dca3] transition-all active:scale-95 group"
+              className="p-3 rounded-full border border-gray-800 bg-[#111] text-white hover:border-[#61dca3] hover:text-[#61dca3] transition-all active:scale-95 group cursor-pointer"
               aria-label="Next Slide"
             >
               <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
@@ -150,10 +163,13 @@ const ProjectSection = () => {
               <motion.div
                 key={`${project.id}-${currentIndex + idx}`} // Unique key for animation stability
                 layout
-                initial={{ opacity: 0, x: direction * 50 }}
+                initial={{ opacity: 0, x: direction * 100 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction * -50 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                exit={{ opacity: 0, x: direction * -100 }}
+                transition={{
+                  x: { type: "spring", stiffness: 200, damping: 25 },
+                  opacity: { duration: 0.2 },
+                }}
                 className="group relative bg-[#111] rounded-2xl overflow-hidden border border-gray-800 hover:border-[#61dca3]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#61dca3]/10 h-full flex flex-col"
               >
                 {/* Image Container */}

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export interface ProjectData {
   id: number;
@@ -22,6 +22,25 @@ interface ProjectModalProps {
 
 const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (!isOpen || !project) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        setCurrentImageIndex((prev) =>
+          prev === 0 ? project.images.length - 1 : prev - 1
+        );
+      } else if (e.key === "ArrowRight") {
+        setCurrentImageIndex((prev) =>
+          prev === project.images.length - 1 ? 0 : prev + 1
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, project]);
 
   if (!project) return null;
 
@@ -60,7 +79,7 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full backdrop-blur-md transition-colors"
+                className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-red-500 text-white rounded-full backdrop-blur-md transition-all cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -93,13 +112,13 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-[#61dca3] text-white hover:text-black rounded-full transition-all opacity-0 group-hover:opacity-100"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-[#61dca3] text-white hover:text-black rounded-full transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
                     >
                       <ChevronLeft className="w-6 h-6" />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-[#61dca3] text-white hover:text-black rounded-full transition-all opacity-0 group-hover:opacity-100"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-[#61dca3] text-white hover:text-black rounded-full transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
                     >
                       <ChevronRight className="w-6 h-6" />
                     </button>
