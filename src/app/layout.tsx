@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Alvin Putra - Portfolio",
   description:
-    " Portfolio website of Alvin Putra, a passionate backend developer.",
+    "Portfolio website of Alvin Putra, a passionate backend developer.",
 };
 
 export default function RootLayout({
