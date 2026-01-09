@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import LetterGlitch from "../design/LetterGlitch";
 import DecryptedText from "../design/DecryptedText";
 import { useTranslation } from "../../language/switch-lang";
+import { MoveRight } from "lucide-react";
 
 const Introduction = () => {
   const { t } = useTranslation();
@@ -77,19 +78,19 @@ const Introduction = () => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
             <a
-              href="#projects"
+              href="#contact"
               className="px-8 py-4 bg-[#61dca3] text-black font-bold rounded-full hover:bg-[#4fd192] transition-all transform hover:scale-105 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(97,220,163,0.3)]"
+            >
+              {t("contactMe")}
+            </a>
+            <a
+              href="#projects"
+              className="px-8 py-4 bg-transparent border border-gray-700 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/30 transition-all flex items-center justify-center gap-2 group"
             >
               {t("viewProjects")}
               <span className="group-hover:translate-x-1 transition-transform">
-                →
+                <MoveRight size={16} />
               </span>
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-4 bg-transparent border border-gray-700 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/30 transition-all flex items-center justify-center"
-            >
-              {t("contactMe")}
             </a>
           </div>
         </div>
