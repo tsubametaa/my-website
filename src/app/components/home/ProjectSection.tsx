@@ -21,7 +21,7 @@ const ProjectSection = () => {
       title: t("p1Title"),
       images: ["/assets/img/sgw.png", "/assets/img/sgw.png"],
       techStack: [
-        { name: "React", src: "/assets/react.svg" },
+        { name: "Astro", src: "/assets/astro.svg" },
         { name: "Typescript", src: "/assets/ts.svg" },
       ],
       description: t("p1Desc"),
