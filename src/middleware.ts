@@ -8,6 +8,7 @@ export function middleware(request: NextRequest) {
   const WINDOW_MS = 60 * 1000;
 
   const ip =
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (request as any).ip || request.headers.get("x-forwarded-for") || "unknown";
 
   if (!rateLimitMap.has(ip)) {
