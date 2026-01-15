@@ -85,7 +85,7 @@ const ProjectSection = () => {
         { name: "Node", src: "/assets/nodejs.svg" },
       ],
       description: t("p6Desc"),
-      link: "https://vending.vercel.app/",
+      link: "https://vending-quest.vercel.app/",
     },
   ];
 
