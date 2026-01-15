@@ -49,30 +49,35 @@ const Count = () => {
   ];
 
   return (
-    <div className="w-full py-8 mt-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-800 bg-[#111] rounded-3xl p-8 md:p-12 border border-gray-800/50 shadow-2xl relative overflow-hidden">
-        {/* Decorative background glow */}
-
+    <div className="h-full w-full bg-[#111] rounded-3xl p-6 md:p-8 flex items-center justify-center border border-gray-800/50 shadow-2xl">
+      <div className="flex items-center justify-between w-full max-w-2xl px-4">
         {stats.map((stat, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center justify-center text-center space-y-4 pt-8 md:pt-0 first:pt-0"
+            className="flex items-center flex-1 justify-center relative"
           >
-            <div className="flex items-baseline gap-1 font-bold text-4xl md:text-5xl lg:text-6xl text-white font-mono">
-              <AnimatedNumber value={stat.value} />
-              <span className="text-[#61dca3] text-2xl md:text-3xl">
-                {stat.suffix}
-              </span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center justify-center text-center"
+            >
+              <div className="flex items-baseline font-bold text-4xl md:text-5xl text-white font-sans">
+                <AnimatedNumber value={stat.value} />
+                {stat.suffix && (
+                  <span className="text-[#61dca3]">{stat.suffix}</span>
+                )}
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 font-bold tracking-widest uppercase mt-2">
+                {stat.label}
+              </p>
+            </motion.div>
 
-            <p className="text-gray-400 font-medium tracking-wider uppercase text-sm md:text-base">
-              {stat.label}
-            </p>
-          </motion.div>
+            {index < stats.length - 1 && (
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 h-16 w-[1px] bg-gray-800 hidden md:block" />
+            )}
+          </div>
         ))}
       </div>
     </div>

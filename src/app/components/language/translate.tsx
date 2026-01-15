@@ -1,16 +1,13 @@
 import { Language } from "./switch-lang";
 
-// Translation content - you can expand this as needed
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
-    // Navigation
     home: "Home",
     about: "About",
     projects: "Projects",
     contact: "Contact",
     hireMe: "Hire Me",
 
-    // Introduction
     availableForHire: "AVAILABLE FOR HIRE",
     iAm: "I'm a",
     role1: "Backend Developer",
@@ -20,7 +17,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     viewProjects: "View Projects",
     contactMe: "Let's Collaborate",
 
-    // About
     aboutMe: "About Me",
     aboutText1:
       "Hello! I'm Alvin Ferina Putra, a passionate developer who bridges the gap between complex backend logic and intuitive user experiences. With a strong foundation in modern web technologies, I specialize in building scalable applications that solve real-world problems.",
@@ -34,7 +30,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     techStack: "Tech Stack",
     techStackDesc: "Tools and technologies I use to bring ideas to life",
 
-    // Projects
     featuredWork: "Featured Work",
     projectDesc:
       "Explore a selection of my recent projects, showcasing my expertise in building scalable and user-centric digital solutions.",
@@ -42,7 +37,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     visitSite: "Visit Site",
     viewProject: "VIEW PROJECT",
 
-    // Project Details
     p1Title: "Sagawa Group",
     p1Desc:
       "A corporate website for Sagawa Group utilizing modern web technologies to ensure fast load times and SEO optimization. The platform features a comprehensive company profile, service listings, and a client portal.",
@@ -56,10 +50,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     p4Desc:
       "A robust profile website for a construction firm, showcasing their portfolio of high-rise buildings and infrastructure projects. Includes a dynamic gallery and project inquiry system.",
     p5Title: "Unyuls",
-    p5Desc:
-      "A creative portfolio template designed for designers and developers.",
+    p5Desc: "A creative portfolio template designed for streamer and gamers.",
+    p6Title: "Queue Quest",
+    p6Desc:
+      "Interactive web-based minigames utilized to simulate and model vending machine operations.",
 
-    // Contact
     startConversation: "Start a Conversation",
     contactTitle: "Contact Me",
     contactDesc:
@@ -74,12 +69,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     messagePlaceholder: "Tell me about your project...",
     sendMessage: "Send Message",
 
-    // Stats
     statsYears: "Years Experience",
     statsProjects: "Projects Completed",
     statsClients: "Satisfied Clients",
 
-    // Misc
     welcome: "Welcome",
     language: "Language",
     selectLanguage: "Select Language",
@@ -87,14 +80,12 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     me: "Me",
   },
   id: {
-    // Navigation
     home: "Beranda",
     about: "Tentang",
     projects: "Proyek",
     contact: "Kontak",
     hireMe: "Rekrut Saya",
 
-    // Introduction
     availableForHire: "TERSEDIA UNTUK DIREKRUT",
     iAm: "Saya seorang",
     role1: "Backend Developer",
@@ -104,7 +95,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     viewProjects: "Lihat Proyek",
     contactMe: "Mari Berkolaborasi",
 
-    // About
     aboutMe: "Tentang Saya",
     aboutText1:
       "Halo! Saya Alvin Ferina Putra, pengembang yang penuh semangat yang menjembatani logika backend yang kompleks dengan pengalaman pengguna yang intuitif. Dengan dasar yang kuat dalam teknologi web modern, saya mengkhususkan diri dalam membangun aplikasi terukur yang memecahkan masalah dunia nyata.",
@@ -118,7 +108,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     techStack: "Tech Stack",
     techStackDesc: "Alat dan teknologi yang saya gunakan untuk mewujudkan ide",
 
-    // Projects
     featuredWork: "Karya Unggulan",
     projectDesc:
       "Jelajahi pilihan proyek terbaru saya, yang memamerkan keahlian saya dalam membangun solusi digital yang terukur dan berpusat pada pengguna.",
@@ -126,7 +115,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     visitSite: "Kunjungi Situs",
     viewProject: "LIHAT PROYEK",
 
-    // Project Details
     p1Title: "Sagawa Group",
     p1Desc:
       "Situs web perusahaan untuk Sagawa Group yang menggunakan teknologi web modern untuk memastikan waktu muat yang cepat dan optimasi SEO. Platform ini menampilkan profil perusahaan yang komprehensif, daftar layanan, dan portal klien.",
@@ -142,8 +130,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     p5Title: "Unyuls",
     p5Desc:
       "Template portofolio kreatif yang dirancang untuk desainer dan pengembang.",
+    p6Title: "Queue Quest",
+    p6Desc:
+      "Minigame berbasis web interaktif yang digunakan untuk mensimulasikan dan memodelkan operasi mesin penjual otomatis.",
 
-    // Contact
     startConversation: "Mulai Percakapan",
     contactTitle: "Hubungi Saya",
     contactDesc:
@@ -158,18 +148,17 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     messagePlaceholder: "Ceritakan tentang proyek Anda...",
     sendMessage: "Kirim Pesan",
 
-    // Stats
     statsYears: "Tahun Pengalaman",
     statsProjects: "Proyek Diselesaikan",
     statsClients: "Klien Puas",
 
-    // Misc
     welcome: "Selamat Datang",
     language: "Bahasa",
     selectLanguage: "Pilih Bahasa",
     services: "Layanan",
     me: "Saya",
   },
+
   ms: {
     home: "Laman Utama",
     about: "Perihal",
@@ -202,7 +191,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     visitSite: "Lawati Laman",
     viewProject: "LIHAT PROJEK",
 
-    // Project Details
     p1Title: "Sagawa Group",
     p1Desc:
       "Laman web korporat untuk Sagawa Group menggunakan teknologi web moden untuk memastikan masa muat yang pantas. Platform ini menampilkan profil syarikat yang komprehensif.",
@@ -217,6 +205,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
       "Laman web profil yang teguh untuk firma pembinaan, mempamerkan portfolio bangunan tinggi mereka.",
     p5Title: "Unyuls",
     p5Desc: "Templat portfolio kreatif yang direka untuk pereka dan pembangun.",
+    p6Title: "Queue Quest",
+    p6Desc:
+      "Permainan mini berasaskan web interaktif yang digunakan untuk mensimulasikan dan memodelkan operasi mesin layan diri.",
 
     startConversation: "Mulakan Perbualan",
     contactTitle: "Hubungi Saya",
@@ -231,7 +222,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     messagePlaceholder: "Ceritakan tentang projek anda...",
     sendMessage: "Hantar Mesej",
 
-    // Stats
     statsYears: "Tahun Pengalaman",
     statsProjects: "Projek Disiapkan",
     statsClients: "Pelanggan Berpuas Hati",
@@ -275,7 +265,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     visitSite: "サイトを訪問",
     viewProject: "プロジェクトを見る",
 
-    // Project Details
     p1Title: "Sagawa Group",
     p1Desc:
       "Sagawa Groupの企業ウェブサイト。最新の技術を使用し、高速な読み込み時間を実現しています。",
@@ -291,6 +280,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     p5Title: "Unyuls",
     p5Desc:
       "デザイナーや開発者向けに設計されたクリエイティブなポートフォリオテンプレート。",
+    p6Title: "Queue Quest",
+    p6Desc:
+      "自動販売機の操作をシミュレーションおよびモデル化するために使用されるインタラクティブなWebベースのミニゲーム。",
 
     startConversation: "会話を始める",
     contactTitle: "お問い合わせ",
@@ -306,7 +298,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     messagePlaceholder: "プロジェクトについて教えてください...",
     sendMessage: "メッセージを送信",
 
-    // Stats
     statsYears: "年の経験",
     statsProjects: "完了したプロジェクト",
     statsClients: "満足したクライアント",
@@ -347,7 +338,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     visitSite: "访问网站",
     viewProject: "查看项目",
 
-    // Project Details
     p1Title: "Sagawa Group",
     p1Desc:
       "Sagawa Group的企业网站，利用现代网络技术确保快速加载时间和SEO优化。",
@@ -359,6 +349,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     p4Desc: "建筑公司的强大简介网站，展示其高层建筑和基础设施项目的组合。",
     p5Title: "Unyuls",
     p5Desc: "专为设计师和开发人员设计的创意作品集模板。",
+    p6Title: "Queue Quest",
+    p6Desc: "用于模拟和建模自动售货机操作的交互式基于Web的迷你游戏。",
 
     startConversation: "开始对话",
     contactTitle: "联系我",
@@ -373,7 +365,6 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     messagePlaceholder: "告诉我关于您的项目...",
     sendMessage: "发送消息",
 
-    // Stats
     statsYears: "多年经验",
     statsProjects: "完成的项目",
     statsClients: "满意的客户",

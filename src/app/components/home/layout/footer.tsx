@@ -21,14 +21,13 @@ export default function Footer() {
     <footer className="w-full bg-[#0a0a0a] text-white border-t border-white/5 pt-12 pb-8">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Brand / Copyright */}
           <div className="text-center md:text-left">
             <p className="text-white/40 text-sm mt-2 flex items-center gap-1">
-              © {new Date().getFullYear()} Alvin Putra. All rights reserved.
+              &copy; {new Date().getFullYear()} Alvin Putra. All rights
+              reserved.
             </p>
           </div>
 
-          {/* Social Links */}
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <a

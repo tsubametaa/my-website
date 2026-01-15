@@ -3,13 +3,11 @@
 import { useState, useEffect } from "react";
 import { useLanguage, Language, LANGUAGE_LABELS } from "./switch-lang";
 
-// Language switcher component
 const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-
-  // Prevent hydration errors
+  
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -21,7 +19,6 @@ const LanguageSwitcher = () => {
     setIsOpen(false);
   };
 
-  // Only render after component is mounted to avoid hydration issues
   if (!isMounted) {
     return <div className="w-10 h-6 bg-gray-200 rounded animate-pulse"></div>;
   }

@@ -21,7 +21,6 @@ const Introduction = () => {
 
   return (
     <div className="relative w-full min-h-screen lg:h-screen overflow-hidden bg-[#0a0a0a] text-white font-sans">
-      {/* Background Glitch Effect - Dimmed for better readability */}
       <div className="absolute inset-0 z-0 opacity-25">
         <LetterGlitch
           glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
@@ -33,11 +32,8 @@ const Introduction = () => {
         />
       </div>
 
-      {/* Main Content Container */}
       <div className="relative z-10 container mx-auto px-8 md:px-16 lg:px-24 h-full flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between gap-12 pt-28 lg:pt-0">
-        {/* Left: Text Content */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 max-w-2xl w-full">
-          {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-[#61dca3]/10 px-4 py-2 rounded-full border border-[#61dca3]/20 backdrop-blur-md">
             <span className="relative flex h-3 w-3">
               <span className="relative inline-flex rounded-full h-3 w-3 bg-[#61dca3]"></span>
@@ -75,7 +71,6 @@ const Introduction = () => {
             {t("introText")}
           </p>
 
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
             <a
               href="#contact"
@@ -95,22 +90,17 @@ const Introduction = () => {
           </div>
         </div>
 
-        {/* Right: Photo Section */}
         <div className="flex items-center justify-center w-full lg:w-auto relative order-first lg:order-last mb-8 lg:mb-0">
           <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px]">
-            {/* Decorative Elements */}
             <div className="absolute -inset-4 border border-[#61dca3]/20 rounded-[2rem] animate-[spin_10s_linear_infinite]" />
             <div className="absolute -inset-8 border border-[#61b3dc]/20 rounded-[2rem] animate-[spin_15s_linear_infinite_reverse] hidden md:block" />
 
-            {/* Tech Decoration Corners */}
             <div className="absolute -top-2 -left-2 w-8 h-8 border-t-4 border-l-4 border-[#61dca3] z-20 pointer-events-none"></div>
             <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-4 border-r-4 border-[#61dca3] z-20 pointer-events-none"></div>
 
-            {/* Image Container */}
             <div className="w-full h-full relative rounded-[2rem] overflow-hidden border-2 border-[#61dca3]/50 shadow-[0_0_50px_rgba(97,220,163,0.2)] bg-[#111]">
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
               {/* 
-                 TODO: Replace this div with your actual Image component
                  <Image src="/your-photo.jpg" alt="Alvin Putra" fill className="object-cover" />
               */}
               <div className="w-full h-full flex items-center justify-center bg-gray-900 text-gray-500 flex-col gap-4">

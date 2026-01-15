@@ -60,7 +60,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -68,7 +67,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
             onClick={onClose}
             className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
           >
-            {/* Modal Content */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -76,7 +74,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
               onClick={(e) => e.stopPropagation()}
               className="bg-[#111] w-full max-w-5xl rounded-3xl overflow-hidden border border-gray-800 shadow-2xl relative flex flex-col max-h-[90vh]"
             >
-              {/* Close Button */}
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-red-500 text-white rounded-full backdrop-blur-md transition-all cursor-pointer"
@@ -84,7 +81,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Image Carousel Section (Top Half) */}
               <div className="relative h-64 md:h-96 w-full bg-black/50 group">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -107,7 +103,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Navigation Buttons */}
                 {project.images.length > 1 && (
                   <>
                     <button
@@ -123,7 +118,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                       <ChevronRight className="w-6 h-6" />
                     </button>
 
-                    {/* Dots Indicator */}
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                       {project.images.map((_, idx) => (
                         <div
@@ -140,10 +134,8 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                 )}
               </div>
 
-              {/* Details Section (Bottom Half) */}
               <div className="p-8 md:p-10 flex flex-col md:flex-row gap-8 overflow-y-auto">
                 <div className="flex-1 space-y-6">
-                  {/* Title and Link */}
                   <div className="flex flex-col gap-2">
                     <h2 className="text-3xl md:text-4xl font-bold text-white">
                       {project.title}
@@ -158,7 +150,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                     </a>
                   </div>
 
-                  {/* Description */}
                   <div className="space-y-4">
                     <p className="text-gray-400 leading-relaxed text-lg">
                       {project.description}
@@ -166,7 +157,6 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                   </div>
                 </div>
 
-                {/* Tech Stack Side */}
                 <div className="w-full md:w-1/3 space-y-4">
                   <h3 className="text-xl font-bold text-white mb-4 border-b border-gray-800 pb-2">
                     Technologies

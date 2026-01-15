@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { GraduationCap, Download } from "lucide-react";
 import TechStack from "./ux/language";
 import Count from "./ux/count";
+import MostLang from "./ux/most-lang";
 import { useTranslation } from "../language/switch-lang";
 
 const AboutSection = () => {
@@ -19,7 +20,6 @@ const AboutSection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20"
         >
-          {/* Who I Am */}
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">
               {t("about")} <span className="text-[#61dca3]">{t("me")}</span>
@@ -47,14 +47,12 @@ const AboutSection = () => {
                   <span>Download_CV</span>
                 </span>
 
-                {/* Decorative corner accents for tech feel */}
                 <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#61dca3] -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></span>
                 <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#61dca3] translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></span>
               </a>
             </div>
           </div>
 
-          {/* Right Column: Education & Background */}
           <div className="space-y-6 bg-[#111] p-8 rounded-2xl border border-gray-800 hover:border-[#61dca3]/50 transition-colors duration-300">
             <h3 className="text-2xl font-bold flex items-center gap-3">
               <GraduationCap className="h-6 w-6 text-[#61dca3]" />
@@ -75,7 +73,6 @@ const AboutSection = () => {
           </div>
         </motion.div>
 
-        {/* Tech Stack Section */}
         <div className="space-y-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -96,7 +93,10 @@ const AboutSection = () => {
             <TechStack />
           </div>
 
-          <Count />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Count />
+            <MostLang />
+          </div>
         </div>
       </div>
     </section>

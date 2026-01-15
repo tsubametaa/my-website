@@ -14,6 +14,25 @@ export default function ContactSection() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const { name, subject, message } = formData;
+    const recipient = "alvinferinaputra2023@student.unas.ac.id";
+    const body = `Hello Alvin, I'm ${name}. ${message}`;
+
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    setTimeout(() => {
+      window.open(gmailLink, "_blank");
+      setIsSubmitting(false);
+    }, 800);
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -33,7 +52,6 @@ export default function ContactSection() {
     >
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left Column: Text & Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -53,7 +71,6 @@ export default function ContactSection() {
               </p>
             </div>
 
-            {/* "Code" Contact Card */}
             <div className="bg-[#111] p-6 rounded-2xl border border-gray-800 font-mono text-sm relative group overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
                 <Terminal size={48} className="text-[#61dca3]" />
@@ -96,16 +113,14 @@ export default function ContactSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Form */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-[#111] border border-gray-800 rounded-3xl p-8 shadow-2xl relative"
           >
-            <form className="space-y-6 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Name */}
                 <div className="space-y-2">
                   <label
                     htmlFor="name"
@@ -118,6 +133,7 @@ export default function ContactSection() {
                     <input
                       type="text"
                       id="name"
+                      required
                       value={formData.name}
                       onChange={handleChange}
                       placeholder={t("namePlaceholder") || "John Doe"}
@@ -126,7 +142,6 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                {/* Email */}
                 <div className="space-y-2">
                   <label
                     htmlFor="email"
@@ -139,6 +154,7 @@ export default function ContactSection() {
                     <input
                       type="email"
                       id="email"
+                      required
                       value={formData.email}
                       onChange={handleChange}
                       placeholder={t("emailPlaceholder") || "john@example.com"}
@@ -148,7 +164,6 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Subject */}
               <div className="space-y-2">
                 <label
                   htmlFor="subject"
@@ -161,6 +176,7 @@ export default function ContactSection() {
                   <input
                     type="text"
                     id="subject"
+                    required
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder={t("subjectPlaceholder") || "Project Details"}
@@ -169,7 +185,6 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Message */}
               <div className="space-y-2">
                 <label
                   htmlFor="message"
@@ -182,6 +197,7 @@ export default function ContactSection() {
                   <textarea
                     id="message"
                     rows={6}
+                    required
                     value={formData.message}
                     onChange={handleChange}
                     placeholder={
@@ -192,17 +208,21 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Button */}
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-xl bg-[#61dca3] font-medium text-black transition-all duration-300 hover:bg-[#58c994] shadow-[0_0_20px_rgba(97,220,163,0.3)] hover:shadow-[0_0_30px_rgba(97,220,163,0.5)] cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-xl bg-[#61dca3] disabled:bg-gray-700 disabled:cursor-not-allowed font-medium text-black transition-all duration-300 hover:bg-[#58c994] shadow-[0_0_20px_rgba(97,220,163,0.3)] hover:shadow-[0_0_30px_rgba(97,220,163,0.5)] cursor-pointer"
                 >
                   <div className="flex items-center gap-2">
                     <span className="font-bold tracking-wide">
-                      {t("sendMessage") || "Send Message"}
+                      {isSubmitting
+                        ? "Opening Email Client..."
+                        : t("sendMessage") || "Send Message"}
                     </span>
-                    <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    {!isSubmitting && (
+                      <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    )}
                   </div>
                 </button>
               </div>

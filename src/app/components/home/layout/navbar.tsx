@@ -53,7 +53,6 @@ export default function Navbar() {
             UTA<span className="text-green-500">.DEV</span>
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <Link
@@ -65,7 +64,6 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* Language Switcher - Professional Style */}
             <div className="relative">
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
@@ -120,7 +118,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Toggle */}
           <button
             className="md:hidden z-50 text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -130,7 +127,6 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -151,7 +147,6 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* Mobile Language Switcher */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
               {(Object.keys(LANGUAGE_LABELS) as Language[]).map((lang) => (
                 <button

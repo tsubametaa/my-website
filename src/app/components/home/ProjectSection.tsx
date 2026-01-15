@@ -45,7 +45,6 @@ const ProjectSection = () => {
       techStack: [
         { name: "Figma", src: "/assets/figma.svg" },
         { name: "React", src: "/assets/react.svg" },
-        { name: "Tailwind", src: "/assets/tailwind.svg" },
         { name: "Typescript", src: "/assets/ts.svg" },
         { name: "MongoDB", src: "/assets/mongodb.svg" },
       ],
@@ -70,10 +69,23 @@ const ProjectSection = () => {
       images: ["/assets/img/unyuls.png", "/assets/img/unyuls.png"],
       techStack: [
         { name: "React", src: "/assets/react.svg" },
-        { name: "Tailwind", src: "/assets/tailwind.svg" },
+        { name: "Node", src: "/assets/nodejs.svg" },
       ],
       description: t("p5Desc"),
       link: "https://unyul-yt.vercel.app/",
+    },
+    {
+      id: 6,
+      title: t("p6Title"),
+      images: ["/assets/img/vending.png", "/assets/img/vending.png"],
+      techStack: [
+        { name: "MongoDB", src: "/assets/mongodb.svg" },
+        { name: "Express", src: "/assets/expressjs.svg" },
+        { name: "Astro", src: "/assets/astro.svg" },
+        { name: "Node", src: "/assets/nodejs.svg" },
+      ],
+      description: t("p6Desc"),
+      link: "https://vending.vercel.app/",
     },
   ];
 
@@ -116,7 +128,6 @@ const ProjectSection = () => {
 
   return (
     <section className="w-full bg-[#0a0a0a] py-20 px-6 relative overflow-hidden">
-      {/* Decorative Background Elements for merging effect */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent pointer-events-none z-10" />
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -137,7 +148,6 @@ const ProjectSection = () => {
             </p>
           </div>
 
-          {/* Custom Navigation - Desktop Only */}
           <div className="hidden lg:flex gap-4">
             <button
               onClick={prevSlide}
@@ -156,7 +166,6 @@ const ProjectSection = () => {
           </div>
         </motion.div>
 
-        {/* Desktop Carousel View */}
         <div className="hidden lg:grid grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout" initial={false} custom={direction}>
             {getVisibleProjects().map((project, idx) => (
@@ -172,7 +181,6 @@ const ProjectSection = () => {
                 }}
                 className="group relative bg-[#111] rounded-2xl overflow-hidden border border-gray-800 hover:border-[#61dca3]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#61dca3]/10 h-full flex flex-col"
               >
-                {/* Image Container */}
                 <div className="relative h-56 w-full overflow-hidden">
                   <Image
                     src={project.images[0]}
@@ -180,10 +188,8 @@ const ProjectSection = () => {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  {/* Dark Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-80" />
 
-                  {/* Hover Actions */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-[2px]">
                     <button
                       onClick={() => setSelectedProject(project)}
@@ -204,9 +210,7 @@ const ProjectSection = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-6 flex flex-col flex-grow relative">
-                  {/* Tech Stack Overlay (Top Right) */}
                   <div className="absolute -top-6 right-4 flex gap-1">
                     {project.techStack.slice(0, 3).map((tech, i) => (
                       <div
@@ -242,7 +246,6 @@ const ProjectSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Mobile/Tablet View (Horizontal Scroll for native feel) */}
         <div className="lg:hidden flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {projects.map((project) => (
             <motion.div

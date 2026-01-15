@@ -25,9 +25,9 @@ const tools = [
     url: "https://vuejs.org",
   },
   {
-    name: "Tailwind",
-    src: "/assets/tailwind.svg",
-    url: "https://tailwindcss.com",
+    name: "Express",
+    src: "/assets/expressjs.svg",
+    url: "https://expressjs.com",
   },
   {
     name: "TypeScript",
@@ -38,6 +38,11 @@ const tools = [
     name: "Go",
     src: "/assets/go.svg",
     url: "https://go.dev",
+  },
+  {
+    name: "Python",
+    src: "/assets/python.svg",
+    url: "https://www.python.org",
   },
   {
     name: "MongoDB",
@@ -51,27 +56,24 @@ const tools = [
   },
 ];
 
-// Repeat the tools multiple times to ensure a seamless loop on all screen sizes
 const duplicatedTools = [...tools, ...tools, ...tools, ...tools];
 
 const TechStack = () => {
   return (
     <div className="w-full py-15 overflow-hidden relative">
-      {/* Edge Fading Gradient - Professional Touch */}
       <div className="absolute left-0 top-0 w-20 md:w-40 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 w-20 md:w-40 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
-      {/* Scrolling Container */}
       <motion.div
         className="flex gap-12 md:gap-24 items-center whitespace-nowrap"
         animate={{
-          x: ["0%", "-150%"],
+          x: ["0%", "-250%"],
         }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 20, // Adjusted for a smoother, professional pace
+            duration: 20,
             ease: "linear",
           },
         }}
