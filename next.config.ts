@@ -4,12 +4,12 @@ const isDev = process.env.NODE_ENV === "development";
 
 const productionCSP = [
   "default-src 'self'",
-  "script-src 'self' 'strict-dynamic'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://vercel.live https://va.vercel-scripts.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
-  "font-src 'self' https://fonts.gstatic.com",
-  "connect-src 'self' https://api.github.com",
-  "frame-src 'none'",
+  "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com https://assets.vercel.com",
+  "font-src 'self' https://fonts.gstatic.com https://assets.vercel.com",
+  "connect-src 'self' https://api.github.com https://cloudflareinsights.com https://vercel.live https://vitals.vercel-insights.com",
+  "frame-src 'self' https://vercel.live",
   "frame-ancestors 'none'",
   "object-src 'none'",
   "base-uri 'self'",
@@ -50,7 +50,6 @@ const nextConfig: NextConfig = {
 
   poweredByHeader: false,
 
-  // Redirect HTTP ke HTTPS di production
   async redirects() {
     return isDev
       ? []
@@ -75,48 +74,39 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
-          // DNS Prefetch
           {
             key: "X-DNS-Prefetch-Control",
             value: "on",
           },
-          // HSTS - Strict Transport Security
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
-          // Prevent Clickjacking
           {
             key: "X-Frame-Options",
             value: "DENY",
           },
-          // Prevent MIME type sniffing
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
           },
-          // XSS Protection (legacy browsers)
           {
             key: "X-XSS-Protection",
             value: "1; mode=block",
           },
-          // Referrer Policy
           {
             key: "Referrer-Policy",
             value: "strict-origin-when-cross-origin",
           },
-          // Permissions Policy
           {
             key: "Permissions-Policy",
             value:
               "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=(), interest-cohort=()",
           },
-          // Content Security Policy
           {
             key: "Content-Security-Policy",
             value: isDev ? developmentCSP : productionCSP,
           },
-          // Cross-Origin Policies
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",
@@ -129,19 +119,16 @@ const nextConfig: NextConfig = {
             key: "Cross-Origin-Embedder-Policy",
             value: isDev ? "unsafe-none" : "require-corp",
           },
-          // Prevent Cross-Domain Policies
           {
             key: "X-Permitted-Cross-Domain-Policies",
             value: "none",
           },
-          // Cache Control untuk HTML pages
           {
             key: "Cache-Control",
             value: "no-store, no-cache, must-revalidate, proxy-revalidate",
           },
         ],
       },
-      // Cache static assets
       {
         source: "/assets/:path*",
         headers: [
@@ -151,7 +138,6 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Security untuk API routes
       {
         source: "/api/:path*",
         headers: [
