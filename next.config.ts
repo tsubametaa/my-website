@@ -2,11 +2,10 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
 
-// CSP untuk production - sangat ketat
 const productionCSP = [
   "default-src 'self'",
   "script-src 'self' 'strict-dynamic'",
-  "style-src 'self' 'unsafe-inline'", // Untuk Tailwind
+  "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
   "font-src 'self' https://fonts.gstatic.com",
   "connect-src 'self' https://api.github.com",
@@ -21,7 +20,6 @@ const productionCSP = [
   "block-all-mixed-content",
 ].join("; ");
 
-// CSP untuk development - lebih permisif
 const developmentCSP = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
@@ -35,7 +33,6 @@ const developmentCSP = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
-  // Konfigurasi keamanan untuk images
   images: {
     remotePatterns: [
       {
@@ -47,11 +44,10 @@ const nextConfig: NextConfig = {
         hostname: "github.com",
       },
     ],
-    dangerouslyAllowSVG: false, // Blokir SVG dari external source
+    dangerouslyAllowSVG: false,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // Powered by header - sembunyikan untuk keamanan
   poweredByHeader: false,
 
   // Redirect HTTP ke HTTPS di production

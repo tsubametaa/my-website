@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { GraduationCap, Download } from "lucide-react";
+import { GraduationCap, Eye } from "lucide-react";
+import Link from "next/link";
 import TechStack from "./ux/language";
 import Count from "./ux/count";
 import MostLang from "./ux/most-lang";
@@ -33,23 +34,20 @@ const AboutSection = () => {
             </p>
 
             <div className="pt-4">
-              <a
-                href="/Alvin_Ferina_Putra_CV.pdf"
-                download="Alvin_Ferina_Putra_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/cv"
                 className="group relative inline-flex items-center gap-3 px-8 py-3 bg-[#61dca3]/5 text-[#61dca3] border border-[#61dca3]/20 rounded-lg overflow-hidden transition-all duration-300 hover:border-[#61dca3] hover:shadow-[0_0_20px_rgba(97,220,163,0.3)]"
               >
                 <span className="absolute inset-0 bg-[#61dca3] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
 
                 <span className="relative z-10 flex items-center gap-2 font-mono font-bold group-hover:text-black transition-colors duration-300">
-                  <Download className="h-5 w-5 hover:animate-none" />
-                  <span>Download_CV</span>
+                  <Eye className="h-5 w-5 hover:animate-none" />
+                  <span>{t("viewCV")}</span>
                 </span>
 
                 <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#61dca3] -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></span>
                 <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#61dca3] translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></span>
-              </a>
+              </Link>
             </div>
           </div>
 
