@@ -1,19 +1,10 @@
-/**
- * Security Hooks
- * React hooks untuk keamanan di client-side
- */
-
 "use client";
 
 import { useEffect, useCallback } from "react";
 import { BLOCKED_KEYWORDS } from "@/lib/security/config";
 
-/**
- * Hook untuk mendeteksi dan memblokir script injection di client
- */
 export function useScriptProtection() {
   useEffect(() => {
-    // Observer untuk mendeteksi penambahan script baru
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
@@ -21,7 +12,6 @@ export function useScriptProtection() {
             const src = node.src?.toLowerCase() || "";
             const content = node.textContent?.toLowerCase() || "";
 
-            // Check untuk blocked keywords
             for (const keyword of BLOCKED_KEYWORDS) {
               if (src.includes(keyword) || content.includes(keyword)) {
                 console.warn(`[SECURITY] Blocked script injection: ${keyword}`);
@@ -30,14 +20,12 @@ export function useScriptProtection() {
               }
             }
 
-            // Block external scripts yang tidak dikenal
             if (src && !isTrustedSource(src)) {
               console.warn(`[SECURITY] Blocked untrusted script: ${src}`);
               node.remove();
             }
           }
 
-          // Block iframe injection
           if (node instanceof HTMLIFrameElement) {
             const src = node.src?.toLowerCase() || "";
             for (const keyword of BLOCKED_KEYWORDS) {
@@ -61,16 +49,12 @@ export function useScriptProtection() {
   }, []);
 }
 
-/**
- * Check apakah source adalah trusted
- */
 function isTrustedSource(src: string): boolean {
   const trustedDomains = [
     window.location.hostname,
     "fonts.googleapis.com",
     "fonts.gstatic.com",
     "cdn.jsdelivr.net",
-    // Tambahkan domain trusted lainnya
   ];
 
   try {
@@ -84,12 +68,8 @@ function isTrustedSource(src: string): boolean {
   }
 }
 
-/**
- * Hook untuk mendeteksi tampering pada DOM
- */
 export function useDOMProtection() {
   useEffect(() => {
-    // Simpan state awal dari elemen penting
     const criticalElements = document.querySelectorAll(
       'meta[name="description"], meta[name="keywords"], title, link[rel="canonical"]',
     );
@@ -99,7 +79,6 @@ export function useDOMProtection() {
       originalStates.set(el, el.outerHTML);
     });
 
-    // Observer untuk mendeteksi perubahan
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         const target = mutation.target as Element;
@@ -110,7 +89,6 @@ export function useDOMProtection() {
 
           if (original !== current) {
             console.warn("[SECURITY] Critical element tampering detected");
-            // Restore original
             const temp = document.createElement("div");
             temp.innerHTML = original!;
             target.replaceWith(temp.firstChild!);
@@ -133,22 +111,15 @@ export function useDOMProtection() {
   }, []);
 }
 
-/**
- * Hook untuk memblokir DevTools (opsional, untuk production)
- */
 export function useDevToolsProtection(enabled: boolean = false) {
   useEffect(() => {
     if (!enabled) return;
-
-    // Deteksi DevTools dengan timing
     const detectDevTools = () => {
       const start = performance.now();
-      // debugger; // Uncomment untuk aktifkan (akan memperlambat jika DevTools terbuka)
       const end = performance.now();
 
       if (end - start > 100) {
         console.warn("[SECURITY] DevTools detected");
-        // Lakukan aksi (redirect, clear content, dll)
       }
     };
 
@@ -157,16 +128,12 @@ export function useDevToolsProtection(enabled: boolean = false) {
   }, [enabled]);
 }
 
-/**
- * Hook untuk mendeteksi Console tampering
- */
 export function useConsoleProtection() {
   useEffect(() => {
     const originalLog = console.log;
     const originalWarn = console.warn;
     const originalError = console.error;
 
-    // Override console methods untuk mendeteksi injection
     console.log = function (...args: unknown[]) {
       const content = args.join(" ");
       for (const keyword of BLOCKED_KEYWORDS) {
@@ -186,14 +153,10 @@ export function useConsoleProtection() {
   }, []);
 }
 
-/**
- * Hook untuk clean/sanitize clipboard content
- */
 export function useClipboardProtection() {
   const handlePaste = useCallback((e: ClipboardEvent) => {
     const text = e.clipboardData?.getData("text") || "";
 
-    // Check untuk blocked keywords
     for (const keyword of BLOCKED_KEYWORDS) {
       if (text.toLowerCase().includes(keyword)) {
         e.preventDefault();
@@ -202,7 +165,6 @@ export function useClipboardProtection() {
       }
     }
 
-    // Check untuk script tags
     if (/<script|javascript:|on\w+=/i.test(text)) {
       e.preventDefault();
       console.warn("[SECURITY] Blocked script in clipboard");
