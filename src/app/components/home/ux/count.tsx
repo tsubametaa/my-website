@@ -50,11 +50,11 @@ const Count = () => {
 
   return (
     <div className="h-full w-full bg-[#111] rounded-3xl p-6 md:p-8 flex items-center justify-center border border-gray-800/50 shadow-2xl">
-      <div className="flex items-center justify-between w-full max-w-2xl px-4">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-2xl px-4 gap-8 md:gap-0">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="flex items-center flex-1 justify-center relative"
+            className="flex items-center flex-1 justify-center relative w-full md:w-auto"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
@@ -74,8 +74,14 @@ const Count = () => {
               </p>
             </motion.div>
 
+            {/* Divider Vertical untuk Desktop */}
             {index < stats.length - 1 && (
               <div className="absolute right-0 top-1/2 -translate-y-1/2 h-16 w-[1px] bg-gray-800 hidden md:block" />
+            )}
+
+            {/* Divider Horizontal untuk Mobile */}
+            {index < stats.length - 1 && (
+              <div className="absolute bottom-[-16px] left-1/2 -translate-x-1/2 w-16 h-[1px] bg-gray-800 block md:hidden" />
             )}
           </div>
         ))}

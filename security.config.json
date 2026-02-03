@@ -1,0 +1,37 @@
+{
+  "name": "My Website Security Policy",
+  "extends": "lighthouse:default",
+  "settings": {
+    "onlyCategories": ["security", "best-practices"]
+  },
+  "securityHeaders": {
+    "Content-Security-Policy": "required",
+    "X-Frame-Options": "required",
+    "X-Content-Type-Options": "required",
+    "Strict-Transport-Security": "required",
+    "X-XSS-Protection": "required"
+  },
+  "blockedPatterns": [
+    "*slot*",
+    "*gacor*",
+    "*togel*",
+    "*judi*",
+    "*casino*",
+    "*betting*",
+    "*poker*",
+    "*jackpot*",
+    "*maxwin*",
+    "*scatter*"
+  ],
+  "trustedDomains": [
+    "yourdomain.com",
+    "api.github.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+  ],
+  "rateLimit": {
+    "windowMs": 60000,
+    "maxRequests": 60,
+    "blockDuration": 300000
+  }
+}

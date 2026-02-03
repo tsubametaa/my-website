@@ -61,7 +61,7 @@ const MostLang = () => {
         <span className="h-[1px] w-6 md:w-12 bg-gray-800"></span>
       </div>
 
-      <div className="flex flex-wrap justify-center items-start gap-8 md:gap-14 w-full z-10">
+      <div className="flex flex-wrap justify-center items-start gap-6 md:gap-14 w-full z-10">
         {stack.map((item, i) => {
           if (item.isRotating) {
             return (

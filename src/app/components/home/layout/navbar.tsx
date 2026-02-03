@@ -19,10 +19,10 @@ export default function Navbar() {
   const { t } = useTranslation();
 
   const navLinks = [
-    { name: t("home"), href: "#home" },
-    { name: t("about"), href: "#about" },
-    { name: t("projects"), href: "#projects" },
-    { name: t("contact"), href: "#contact" },
+    { name: t("home"), href: "/" },
+    { name: t("about"), href: "/#about" },
+    { name: t("projects"), href: "/#projects" },
+    { name: t("contact"), href: "/#contact" },
   ];
 
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function Navbar() {
                             </span>
                             {language === lang && <Check className="w-3 h-3" />}
                           </button>
-                        )
+                        ),
                       )}
                     </div>
                   </motion.div>
@@ -147,23 +147,28 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {(Object.keys(LANGUAGE_LABELS) as Language[]).map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => {
-                    setLanguage(lang);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`px-4 py-2 rounded-full text-sm font-mono border transition-all ${
-                    language === lang
-                      ? "bg-[#61dca3] text-black border-[#61dca3]"
-                      : "bg-transparent text-gray-500 border-gray-800 hover:border-white/20 hover:text-white"
-                  }`}
-                >
-                  {LANGUAGE_LABELS[lang]}
-                </button>
-              ))}
+            <div className="mt-8 w-full px-8">
+              <p className="text-gray-500 text-xs font-mono w-full text-center uppercase tracking-widest mb-4">
+                {t("selectLanguage")}
+              </p>
+              <div className="grid grid-cols-2 gap-3 w-full max-w-xs mx-auto">
+                {(Object.keys(LANGUAGE_LABELS) as Language[]).map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => {
+                      setLanguage(lang);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium border transition-all ${
+                      language === lang
+                        ? "bg-[#61dca3]/10 text-[#61dca3] border-[#61dca3]/50 shadow-[0_0_15px_-5px_#61dca3]"
+                        : "bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/10"
+                    }`}
+                  >
+                    {LANGUAGE_LABELS[lang]}
+                  </button>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

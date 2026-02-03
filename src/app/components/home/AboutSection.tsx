@@ -34,8 +34,8 @@ const AboutSection = () => {
 
             <div className="pt-4">
               <a
-                href="/alvin_cv.pdf"
-                download="alvin_cv.pdf"
+                href="/Alvin_Ferina_Putra_CV.pdf"
+                download="Alvin_Ferina_Putra_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center gap-3 px-8 py-3 bg-[#61dca3]/5 text-[#61dca3] border border-[#61dca3]/20 rounded-lg overflow-hidden transition-all duration-300 hover:border-[#61dca3] hover:shadow-[0_0_20px_rgba(97,220,163,0.3)]"

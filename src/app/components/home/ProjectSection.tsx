@@ -8,89 +8,19 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
+  ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 import ProjectModal, { ProjectData } from "./ux/project/modals";
 import { useTranslation } from "../language/switch-lang";
+import { useProjects } from "../../hooks/useProjects";
 
 const ProjectSection = () => {
   const { t } = useTranslation();
-
-  const projects: ProjectData[] = [
-    {
-      id: 1,
-      title: t("p1Title"),
-      images: ["/assets/img/sgw.png", "/assets/img/sgw.png"],
-      techStack: [
-        { name: "Astro", src: "/assets/astro.svg" },
-        { name: "Typescript", src: "/assets/ts.svg" },
-      ],
-      description: t("p1Desc"),
-      link: "https://sagawagroup.id",
-    },
-    {
-      id: 2,
-      title: t("p2Title"),
-      images: ["/assets/img/7kaih.png", "/assets/img/7kaih.png"],
-      techStack: [
-        { name: "React", src: "/assets/react.svg" },
-        { name: "Typescript", src: "/assets/ts.svg" },
-      ],
-      description: t("p2Desc"),
-      link: "https://7kaih-smkn31.vercel.app/",
-    },
-    {
-      id: 3,
-      title: t("p3Title"),
-      images: ["/assets/img/freelinkd.png", "/assets/img/freelinkd.png"],
-      techStack: [
-        { name: "Figma", src: "/assets/figma.svg" },
-        { name: "React", src: "/assets/react.svg" },
-        { name: "Typescript", src: "/assets/ts.svg" },
-        { name: "MongoDB", src: "/assets/mongodb.svg" },
-      ],
-      description: t("p3Desc"),
-      link: "https://freelinkd.com",
-    },
-    {
-      id: 4,
-      title: t("p4Title"),
-      images: ["/assets/img/awacons.png", "/assets/img/awacons.png"],
-      techStack: [
-        { name: "Figma", src: "/assets/figma.svg" },
-        { name: "React", src: "/assets/react.svg" },
-        { name: "Tailwind", src: "/assets/tailwind.svg" },
-      ],
-      description: t("p4Desc"),
-      link: "https://awa-construction.vercel.app/",
-    },
-    {
-      id: 5,
-      title: t("p5Title"),
-      images: ["/assets/img/unyuls.png", "/assets/img/unyuls.png"],
-      techStack: [
-        { name: "React", src: "/assets/react.svg" },
-        { name: "Node", src: "/assets/nodejs.svg" },
-      ],
-      description: t("p5Desc"),
-      link: "https://unyul-yt.vercel.app/",
-    },
-    {
-      id: 6,
-      title: t("p6Title"),
-      images: ["/assets/img/vending.png", "/assets/img/vending.png"],
-      techStack: [
-        { name: "MongoDB", src: "/assets/mongodb.svg" },
-        { name: "Express", src: "/assets/expressjs.svg" },
-        { name: "Astro", src: "/assets/astro.svg" },
-        { name: "Node", src: "/assets/nodejs.svg" },
-      ],
-      description: t("p6Desc"),
-      link: "https://vending-quest.vercel.app/",
-    },
-  ];
+  const { projects } = useProjects();
 
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(
-    null
+    null,
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -119,9 +49,11 @@ const ProjectSection = () => {
   });
 
   const getVisibleProjects = () => {
-    const visible = [];
+    const visible: ProjectData[] = [];
     for (let i = 0; i < 3; i++) {
-      visible.push(projects[(currentIndex + i) % projects.length]);
+      if (projects.length > 0) {
+        visible.push(projects[(currentIndex + i) % projects.length]);
+      }
     }
     return visible;
   };
@@ -316,6 +248,19 @@ const ProjectSection = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-12 relative z-10">
+          <Link href="/projects">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-[#61dca3] text-black font-bold rounded-full hover:bg-[#4bc28d] transition-all shadow-[0_0_20px_rgba(97,220,163,0.3)] hover:shadow-[0_0_30px_rgba(97,220,163,0.5)] flex items-center gap-2 text-sm uppercase tracking-wider cursor-pointer"
+            >
+              {t("viewAllProjects")}
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </Link>
         </div>
       </div>
 
