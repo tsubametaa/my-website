@@ -145,26 +145,15 @@ export const useProjects = () => {
 
   const experiments: ProjectData[] = [
     {
-      id: 201,
-      title: t("e1Title"),
-      images: ["/assets/img/unyuls.png"],
+      id: 5,
+      title: t("p5Title"),
+      images: ["/assets/img/unyuls.png", "/assets/img/unyuls.png"],
       techStack: [
         { name: "React", src: "/assets/react.svg" },
-        { name: "Tailwind", src: "/assets/tailwind.svg" },
+        { name: "Node", src: "/assets/nodejs.svg" },
       ],
-      description: t("e1Desc"),
-      link: "#",
-    },
-    {
-      id: 202,
-      title: t("e2Title"),
-      images: ["/assets/img/unyuls.png"], // Placeholder
-      techStack: [
-        { name: "CSS", src: "/assets/html.svg" }, // Placeholder src
-        { name: "HTML", src: "/assets/html.svg" },
-      ],
-      description: t("e2Desc"),
-      link: "#",
+      description: t("p5Desc"),
+      link: "https://unyul-yt.vercel.app/",
     },
     {
       id: 203,

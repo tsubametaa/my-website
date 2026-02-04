@@ -15,10 +15,50 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+import JsonLd from "./components/JsonLd";
+
 export const metadata: Metadata = {
-  title: "Alvin Putra - Portfolio",
-  description:
-    "Portfolio website of Alvin Putra, a passionate backend developer.",
+  title: {
+    default: "Alvin Putra - Portfolio | Web Portfolio",
+    template: "%s | Alvin Putra",
+  },
+  description: "Website Portfolio Alvin Putra.",
+  keywords: [
+    "Alvin Putra",
+    "Mahasiswa UNAS",
+    "Sistem Informasi UNAS",
+    "Backend Developer Jakarta",
+    "Portfolio Web Developer",
+    "Universitas Nasional",
+    "Alvin Unas",
+    "Unas",
+    "Unas 2023",
+  ],
+  authors: [{ name: "Alvin Putra", url: "https://utaaa.my.id" }],
+  creator: "Alvin Putra",
+  publisher: "Alvin Putra",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://utaaa.my.id"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Alvin Putra - Portfolio",
+    description: "Web Portfolio Alvin Putra.",
+    url: "https://utaaa.my.id",
+    siteName: "Alvin Putra Portfolio",
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alvin Putra - Portfolio",
+    description: "Web Portfolio Alvin Putra.",
+  },
 };
 
 export default function RootLayout({
@@ -31,6 +71,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <JsonLd />
         <SecurityProvider
           enableScriptProtection={true}
           enableDOMProtection={true}
