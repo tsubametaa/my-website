@@ -166,6 +166,17 @@ export const useProjects = () => {
       description: t("e3Desc"),
       link: "https://neotreetion.vercel.app/",
     },
+    {
+      id: 204,
+      title: t("e4Title"),
+      images: ["/assets/img/personal-web.png"],
+      techStack: [
+        { name: "Solid", src: "/assets/solidjs.svg" },
+        { name: "Tailwind", src: "/assets/tailwind.svg" },
+      ],
+      description: t("e4Desc"),
+      link: "https://utaaa-web.vercel.app/",
+    },
   ];
 
   return { projects, contributions, experiments, tasks };
